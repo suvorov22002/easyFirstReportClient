@@ -1,0 +1,10 @@
+
+    <mat-form-field class="input-question-full-width" *ngIf="loaded">
+        <mat-label><span>{{evidences.code}}#</span>{{evidences.libelle}}</mat-label>
+        <mat-select [formControl]="control">
+          <mat-option>Selectionnez</mat-option>
+          <mat-option *ngFor="let option of question.options" value="{{option.value}}"> {{option.value}} </mat-option>
+        </mat-select>
+        <mat-error *ngIf="control.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+

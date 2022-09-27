@@ -1,0 +1,113 @@
+<form #customForm="ngForm" >
+    <div class="">
+        <div class="w-full lg:w-3/12 px-4">
+            <div class="relative w-full mb-3" *ngIf="objj.input == 'input-text'">
+                  <mat-form-field  appearance="fill">
+                  <mat-label>{{obj.typeEvidence.code}}</mat-label>
+                  <input 
+                    matInput 
+                    style="padding: 0;"
+                    [maxlength]=100
+                    [minlength]=5
+                    [name]="obj.typeEvidence.code"
+                    [(ngModel)]="obj.valeur"
+                    [type]="type"
+                    placeholder="{{obj.typeEvidence.code}}" [formControl]="control" 
+                    title="Plusieurs valeurs separer par ;"
+                  > 
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="w-full lg:w-3/12 px-4">
+            <div class="relative w-full mb-3" *ngIf="objj.input == 'input-date'">
+              <mat-form-field  appearance="fill">
+                <mat-label>{{obj.typeEvidence.code}}</mat-label>
+                <input 
+                    matInput 
+                    style="padding: 0;"
+                    [matDatepicker]="picker"
+                    [name]="obj.typeEvidence.code"
+                    [(ngModel)]="obj.valeur" 
+                    placeholder="Choose a date"
+                    [formControl]="control"
+                > 
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="control.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+        </div>
+        <div class="w-full lg:w-3/12 px-4">
+            <div class="relative w-full mb-3" *ngIf="objj.input == 'select'">
+               <mat-form-field  appearance="fill">
+                <mat-label>{{obj.typeEvidence.code}}</mat-label>
+                <input 
+                    matInput 
+                    style="padding: 0;"
+                    [maxlength]="objj.maxlength"
+                    [minlength]="objj.minLength"
+                    [name]="obj.typeEvidence.code"
+                    [(ngModel)]="obj.valeur"
+                 
+                    [formControl]="control"
+                    required
+                > 
+                </mat-form-field>
+                
+            </div>
+        </div>
+        <div class="w-full lg:w-3/12 px-4">
+            <div class="relative w-full mb-3" *ngIf="objj.input == 'input-number'">
+                <mat-form-field  appearance="fill">
+                <mat-label>{{obj.typeEvidence.code}}</mat-label>
+                <input 
+                    matInput 
+                    style="padding: 0;"
+                    [max]="objj.maxlength"
+                    [min]="objj.minLength"
+                    [name]="obj.typeEvidence.code"
+                    [(ngModel)]="obj.valeur"
+                    required
+                    type = "number"
+                > 
+              </mat-form-field>
+            </div>
+        </div>
+        <div class="w-full lg:w-3/12 px-4">
+            <div class="relative w-full mb-3" *ngIf="objj.input == 'text'">
+                    <mat-form-field  appearance="fill">
+                    <mat-label>{{obj.typeEvidence.code}}</mat-label>
+            <!--    <input 
+                        matInput 
+                        style="padding: 0;"
+                        [maxlength]="obj.maxlength"
+                        [minlength]="obj.minLength"
+                        [name]="obj.typeEvidence.code"
+                        [(ngModel)]="obj.valeur"
+                        [required]="obj.isRequired" 
+                        [formControl]="control"
+                    > 
+                    -->
+                    <textarea matInput [formControl]="control" placeholder="Contenu et resolution..."  [name]="obj.typeEvidence.code"
+                        [(ngModel)]="obj.valeur"></textarea>
+                    <mat-error *ngIf="control.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+  
+    <!--
+        <div class="w-full lg:w-3/12 px-4">
+          <div class="relative w-full mb-3" *ngIf="obj">
+            <button
+            class="bg-indigo-500 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+            [disabled]="customForm.form.invalid" 
+            (click)="submit(customForm)" 
+            >
+               <i class="fa fa-plus" aria-hidden="true"></i>
+              Ajout activite
+            </button>
+          </div>
+        </div>
+    -->
+   </div>
+</form>

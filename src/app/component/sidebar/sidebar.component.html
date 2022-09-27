@@ -1,0 +1,251 @@
+
+<nav
+  class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-hidden md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 py-4 px-2"
+>
+<!--
+<nav
+  class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-hidden md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-2 px-3"
+>
+md:min-h-full
+-->
+  <div
+    class="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center m-1 justify-between w-full mx-auto"
+  >
+   
+    <!-- Collapse -->
+    <div
+      class="md:flex md:flex-col md:items-stretch bg-gray-200 md:opacity-100  md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0  overflow-y-auto overflow-x-hidden h-auto items-center m-1 flex-1 rounded"
+      [ngClass]="collapseShow"
+    >
+      <!-- Collapse header -->
+      <div
+        class="md:min-w-full block pb-4 mb-4 border-b border-solid border-blueGray-200"
+      >
+        <div class="flex justify-center">
+          <div class="">
+            <h6
+              class="text-black text-xs uppercase font-bold block pt-1 pb-4 no-underline text-center"
+            >
+              Quick First Report
+            </h6>
+          </div>
+        </div>
+      </div>
+     
+      <!-- Divider 
+      <hr class="my-4 md:min-w-full" />-->
+      <!-- Heading -->
+ 
+  <ul class="top-level-menu-1 list-none">
+    <li>
+      <a [routerLink]="['/traitement']" 
+            routerLinkActive="active" 
+            > 
+            <h6
+            class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+          >
+          <i class="fa fa-briefcase  ml-2 mr-2 text-sm" aria-hidden="true"></i>
+            Traitements
+          </h6>
+      </a>
+      <ul class="md:hidden md:min-w-full flex flex-col list-none my-4 second-level-menu-1">
+        <li class="items-center m-1 m-1">
+          <a
+            [routerLink]="['/traitement']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive
+            #adminDashboard="routerLinkActive"
+            [ngClass]="'text-white hover:text-lightBlue-600'"
+          >
+          <div class="ml-2 mr-2" >Saisir Rapport</div>
+           
+          </a>
+        </li>
+
+        <li class="items-center m-1">
+        <!--  <a
+            [routerLink]="['/traitement']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive
+            #adminDashboard="routerLinkActive"
+            [ngClass]="
+              adminDashboard.isActive
+                ? 'text-white hover:text-red-700'
+                : 'text-white hover:text-lightBlue-600'
+            "
+          >-->
+          <a
+          [routerLink]="['/validrapport']"
+          class="text-xs uppercase py-3 font-bold block"
+          routerLinkActive
+          #adminSettings="routerLinkActive"
+          [ngClass]="'text-white hover:text-lightBlue-600'"
+         >
+         <div class="ml-2 mr-2" >Consulter rapports</div>
+           
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="top-level-menu-2 list-none">
+    <li>
+      <!-- Divider -->
+      <hr class="my-4 md:min-w-full" />
+      <!-- Heading -->
+      
+      <!-- Navigation -->
+      <a [routerLink]="['/consultation']" 
+            routerLinkActive="active" 
+      > 
+        <h6
+          class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+        >
+        <i class="fas fa-newspaper ml-2 mr-2 text-sm"></i>
+          Consulter
+        </h6>
+      </a>
+      <ul class="md:hidden md:min-w-full flex flex-col list-none md:mb-4 second-level-menu-2">
+                
+        <li class="items-center m-1 ">
+          <a
+          [routerLink]="['/consultation']"
+          class="text-xs uppercase py-3 font-bold block"
+          routerLinkActive
+          #adminSettings="routerLinkActive"
+          [ngClass]="'text-white hover:text-lightBlue-600'"
+         >
+      
+            <div class="ml-2 mr-2" >Editer rapports</div>
+           
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+<ul class="top-level-menu-3 list-none">
+  <li>
+      <!-- Divider -->
+      <hr class="my-4 md:min-w-full" />
+      <!-- Heading -->
+     
+      <a [routerLink]="['/reports']" 
+            routerLinkActive="active" 
+      > 
+        <h6
+          class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+        >
+        <i class="fas fa-newspaper ml-2 mr-2 text-sm"></i>
+          Reporting
+        </h6>
+      </a>
+      <!-- Navigation -->
+
+      <ul class="md:hidden md:min-w-full flex flex-col list-none md:mb-4 second-level-menu-3">
+        <li class="items-center m-1">
+          <a
+            [routerLink]="['/reports']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive
+            #adminSettings="routerLinkActive"
+            [ngClass]="'text-white hover:text-lightBlue-600'"
+          >
+          <div class="ml-2 mr-2" >Reports</div>
+            
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul class="top-level-menu-4 list-none">
+    <li>
+      <!-- Divider -->
+      <hr class="my-4 md:min-w-full" />
+      <!-- Heading -->
+      <a [routerLink]="['/config']" 
+         routerLinkActive="active" 
+      > 
+        <h6
+          class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+        >
+           <i class="fa fa-cogs ml-2 mr-2 text-sm" aria-hidden="true"></i>
+          Configuration
+        </h6>
+      </a>
+      <!-- Navigation -->
+
+      <ul class="md:hidden md:min-w-full flex flex-col list-none md:mb-4 second-level-menu-4">
+        <li class="items-center m-1">
+          <a
+            [routerLink]="['/evidences']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive
+            #adminSettings="routerLinkActive"
+            [ngClass]="'text-white hover:text-lightBlue-600'"
+          >
+          <div class="ml-2 mr-2" >Evidences</div>
+            
+          </a>
+        </li>
+
+        <li class="items-center m-1">
+          <a
+            [routerLink]="['/categorie']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive
+            #adminSettings="routerLinkActive"
+            [ngClass]="'text-white hover:text-lightBlue-600'"
+          >
+          <div class="ml-2 mr-2" >Categorie</div>
+         
+          </a>
+        </li>
+
+        <li class="items-center m-1">
+          <a
+            [routerLink]="['/etapes']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive
+            #adminSettings="routerLinkActive"
+            [ngClass]="'text-white hover:text-lightBlue-600'"
+          >
+          <div class="ml-2 mr-2" >Etapes</div>
+         
+          </a>
+        </li>
+
+        <li class="items-center m-1">
+          <a
+            [routerLink]="['/parcours']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive
+            #adminSettings="routerLinkActive"
+            [ngClass]="'text-white hover:text-lightBlue-600'"
+          >
+          <div class="ml-2 mr-2" >Parcours</div>
+         
+          </a>
+        </li>
+
+      </ul>
+    </li>
+  </ul>
+       <!-- Divider -->
+      <hr class="my-4 md:min-w-full" />
+    <!--   <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+        <li class="items-center m-1">
+          <a
+            [routerLink]="['/login']"
+            class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+          >
+            <i class="fas fa-newspaper text-blueGray-300 mr-2 text-sm"></i>
+            Deconnexion
+          </a>
+        </li>
+      </ul>
+    -->
+    </div>
+  </div>
+</nav>

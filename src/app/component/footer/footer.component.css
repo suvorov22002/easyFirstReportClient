@@ -1,0 +1,10 @@
+.bgfoot {
+    background: url('/o/easy-first-report-client-0.0.0/easyFirstReportClient/assets/images/bg-footer.jpg');
+    background-repeat: repeat-x;
+    background-size: 400px;
+    background-position: center;
+ /*   background-color: rgb(230, 230, 230, 0.1);
+    border: 1px dotted #eee;*/
+    cursor: pointer;
+    box-sizing: border-box;
+  }

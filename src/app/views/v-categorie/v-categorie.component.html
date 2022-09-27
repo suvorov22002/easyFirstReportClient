@@ -1,0 +1,307 @@
+<div class="flex justify-center">
+    <div class="w-full lg:w-9/12 px-4">
+        <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+      >
+    <!-- Header ajout d'categories -->
+       <div class="rounded-t bg-white mb-0 px-6 py-2">
+          <div class="text-center flex justify-between">
+          <h6 class="text-blueGray-700 text-xl font-bold">Types de categorie</h6> 
+            <button 
+              class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+              type="button"  (click)="toggleCollapseShow()"
+            >
+             <i class="fa fa-plus" aria-hidden="true"></i><span class="glyphicon glyphicon-envelope"></span> 
+              Ajouter categorie
+            </button>
+
+          </div>
+        </div>
+        <!-- form ajout categorie flex flex-nowrap-->
+        <div class=" px-4 lg:px-10 py-10 pt-0" [ngClass]="collapseShow ? 'show':'hidden'">
+          <form autocomplete="off">
+            <h6 class="text-blueGray-400 bg-red-400  text-sm mt-3 mb-6 font-bold uppercase">
+              
+            </h6>
+          
+            
+                  <fieldset >
+                      <legend >Categorie</legend>
+                  <div class="flex flex-wrap gap-6">
+                    <div class="w-full lg:w-3/12">
+                    <!--  <div class="relative w-full mb-3 py-4">-->
+                    
+                        <mat-form-field  appearance="fill">
+                          <mat-label>Reference</mat-label>
+                          <input 
+                            matInput 
+                            style="padding: 0;"
+                            name="c.reference"
+                            [(ngModel)]="categ.reference"
+                            [disabled] = "c_edit"
+                            placeholder="Reference"
+                          > 
+                        </mat-form-field>
+                    <!--  </div>-->
+                    </div>
+                    <div class="w-full lg:w-3/12">
+                    <!--  <div class="relative w-full mb-3 py-4">-->
+                        <mat-form-field  appearance="fill">
+                          <mat-label>Libelle</mat-label>
+                          <input 
+                            matInput 
+                            style="padding: 0;"
+                            name="c.libelle"
+                            [(ngModel)]="categ.libelle"
+                            placeholder="Libelle"
+                            [disabled] = "c_edit"
+                          > 
+                        </mat-form-field>
+                    <!--  </div>-->
+                    </div>
+                    <div class="w-full lg:w-3/12 ">
+                    <!--  <div class="relative w-full mb-3 py-4">-->
+                      
+                        <mat-form-field appearance="fill">
+                          <mat-label>Profil</mat-label>
+                          
+                          <mat-select [(ngModel)]="categ.profils" 
+                          placeholder="Profil" [disabled] = "c_edit"
+                          name="c.profils">
+                          <mat-option *ngFor="let p of profils" [value]="p.code">
+                              {{p.name}}
+                          </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    <!--  </div>-->
+                    </div>
+                    
+                  </div>
+                  </fieldset>
+            
+            <hr class="my-4 md:min-w-full" />
+            <fieldset>
+                <legend >Activités</legend>
+
+                <div class="flex flex-wrap gap-6">
+
+                    <div class="w-full lg:w-3/12">
+                        <div class="relative w-full mb-3">
+                            <mat-form-field  appearance="fill">
+                              <mat-label> Reference de l'activité</mat-label>
+                              <input 
+                                matInput 
+                                style="padding: 0;"
+                                name="reference"
+                                [(ngModel)]="activite.reference"
+                            
+                              > 
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-3/12">
+                        <mat-form-field  appearance="fill">
+                          <mat-label>Libelle de l'activité</mat-label>
+                          <input 
+                            matInput 
+                            style="padding: 0;"
+                            name="libelle"
+                            [(ngModel)]="activite.libelle"
+                            placeholder="libelle"
+                          > 
+                        </mat-form-field>
+                    </div>
+
+                    <div class="w-full lg:w-3/12">
+                        <div class="relative w-full mb-3">
+                        <mat-form-field appearance="fill" class="multis">
+                          <!--<mat-label>Evidences</mat-label>-->
+                          <mat-select [formControl]="toppings" multiple [(value)]="activite.typeEvidences"  placeholder="Evidences">
+                            <mat-select-trigger >
+                              {{toppings.value ? toppings.value[0].code : ''}}
+                              <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+                                (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                              </span>
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping.code}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+
+                    <div class="w-full lg:w-auto">
+                      <div class="relative mb-3 text-center flex justify-end">
+                        <button 
+                          class="bg-blueGray-900 text-white active:bg-red-700 font-bold text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                          type="button"  (click)="addTableActivity()"
+                        >
+                         <i class="fa fa-plus" aria-hidden="true"></i><span class="glyphicon glyphicon-envelope"></span> 
+                         
+                        </button>
+            
+                      </div>
+                    </div>
+               
+
+                    <div class="relative w-full px-4">
+                        <div class="w-full">
+                            <app-categ-table [activites]="_activits" color="light"></app-categ-table>
+                        </div>
+                    </div>
+              </div>  
+            
+            </fieldset>
+
+            
+              <div class="w-full lg:w-full px-4">
+                <div class="relative mb-3 text-center flex justify-end">
+                    <button
+                      class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                      type="button" (click)="saveCateg()"
+                    >
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                    Valider
+                    </button>
+                    <button
+                      class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                      type="button"
+                    >
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                     Annuler
+                    </button>
+                </div>
+            
+              </div>
+
+          
+      
+           
+          </form>
+        </div>
+        <hr class="mt-6 border-b-1 border-blueGray-300" />
+        <!-- Header liste d'categories -->
+        <div class="rounded-t bg-white mb-0 px-6 py-2">
+            <div class="text-center flex justify-between">
+            <h6 class="text-blueGray-700 text-xl font-bold">Liste des categories</h6> 
+              <button
+                class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                type="button" (click)="toggleCollapseShow1()"
+              >
+              <i class="fa fa-eye" aria-hidden="true"></i>
+                Visualiser
+              </button>
+  
+            </div>
+
+        </div>
+
+         
+            <!-- Table liste de categorie -->
+    <!--    <div class="flex-auto px-4 lg:px-10 py-10 pt-0" [ngClass]="collapseShow1 ? 'show':'hidden'">-->
+        <div class="flex-auto px-4 lg:px-10 py-2 pt-0" [ngClass]="collapseShow1 ? 'show':'hidden'"> 
+            <div class="flex flex-wrap mt-4">
+              <div class="block w-full overflow-auto">
+                <!-- Projects table -scroll   overflow-x-auto-->
+                <table class="items-center w-full bg-transparent border-collapse">
+                  <thead>
+                    <tr>
+                      <th
+                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                        [ngClass]="
+                          color === 'light'
+                            ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                            : 'bg-red-800 text-red-300 border-red-700'
+                        "
+                      >
+                        Reference
+                      </th>
+                      <th
+                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                        [ngClass]="
+                          color === 'light'
+                            ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                            : 'bg-red-800 text-red-300 border-red-700'
+                        "
+                      >
+                        Libelle
+                      </th>
+                      <th
+                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                        [ngClass]="
+                          color === 'light'
+                            ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                            : 'bg-red-800 text-red-300 border-red-700'
+                        "
+                      >
+                        Profil
+                      </th>
+                      <th
+                        class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                        [ngClass]="
+                          color === 'light'
+                            ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                            : 'bg-red-800 text-red-300 border-red-700'
+                        "
+                      >
+                        Editer
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody >
+                    <tr *ngFor="let item of category; index as i" class="topic">
+                      <th
+                        class="px-6 text-xs text-left flex items-center"
+                      >
+                        
+                        <span
+                          class="ml-3 font-bold"
+                         
+                        >
+                          {{item.reference}}
+                        </span>
+                      </th>
+                      <td
+                        class="px-6 text-xs"
+                      >
+                      {{item.libelle}}
+                      </td>
+                      <td
+                        class="px-6 text-xs"
+                      >
+                      {{item.profils}}
+                      </td>
+                      <td
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap"
+                      >       
+                        <button
+                              class="bg-orange-500 text-black active:bg-red-700 font-bold uppercase text-xs px-2 m-1 rounded"
+                              type="button" (click)="editForm(item)"
+                          >
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button
+                          class="bg-teal-500 text-black active:bg-red-700 font-bold uppercase text-xs px-2 m-1 rounded"
+                            type="button" (click)="erase(item)"
+                        >
+                        <i class="fas fa-trash-alt"></i>
+                        </button>
+                      </td>
+            
+                    </tr>
+                   
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+
+  
+ 
+
+
+      </div>
+      
+    </div>
+</div>
+  

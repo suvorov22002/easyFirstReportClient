@@ -1,0 +1,10 @@
+.mat-icon {
+    transform: scale(2);
+}
+.content-full-width {
+    width: 100%;
+  }
+.mat-form-field {
+   /* width: 100% !important;*/
+    font-size: 13px !important;
+}

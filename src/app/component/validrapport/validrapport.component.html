@@ -1,0 +1,139 @@
+<div class="flex justify-center">
+    <div class="w-full lg:w-11/12 px-4">
+        <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+      >
+ <!-- Header liste d'evidences -->
+        <div class="rounded-t bg-white mb-0 p-2 ">
+            <h6 class="text-blueGray-700 text-xl font-bold">Validation des rapports d'activités.</h6> 
+        </div>
+
+        <div class="flex flex-wrap justify-start gap-6 px-4 mt-3">
+           
+
+                    <mat-form-field >
+                    <mat-label>Date du debut</mat-label>
+                    <input matInput [matDatepicker]="pickers" name="datei"
+                    [(ngModel)]="valid_report.dateD">
+                    <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+                    <mat-datepicker #pickers></mat-datepicker>
+                    </mat-form-field>
+            
+
+           
+                <mat-form-field >
+                    <mat-label>Date de fin</mat-label>
+                    <input matInput [matDatepicker]="_pickers" name="datef"
+                    [(ngModel)]="valid_report.dateF">
+                    <mat-datepicker-toggle matSuffix [for]="_pickers"></mat-datepicker-toggle>
+                    <mat-datepicker #_pickers></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Unite</mat-label>
+                    <input 
+                      matInput 
+                      style="padding: 0; color: rgba(12, 1, 1, 0.883) !important; font-size: 13px !important;"
+                      maxlength=100
+                      minlength=5
+                      
+                     
+                      placeholder="'Agence'" 
+                    > 
+                </mat-form-field>
+
+                <mat-form-field  class="">
+                    <mat-label>Code agence</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0; color: rgba(12, 1, 1, 0.883) !important; font-size: 13px !important;"
+                    name="age"
+                    [(ngModel)]="age"
+                    required
+                    > 
+                  </mat-form-field>
+           
+                <mat-form-field >
+                    <mat-label>Type de rapport</mat-label>
+                    <mat-select [(ngModel)]="report" 
+                      (selectionChange)="onSelectItem($event)" required >
+                    <mat-option *ngFor="let c of etapes" [value]="c">
+                        {{c.valeur}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+             
+            <div class="w-full lg:w-3/12 p-1 ">
+                <div class="relative w-full">
+                <button
+                    class="p-3 bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs  rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150" (click)="searchR()" >
+                    Rechercher
+                </button>
+                </div>
+            </div>
+        
+          </div>
+         
+        <div class="flex-auto px-4 lg:px-10  pt-0"> 
+            <div class="flex flex-wrap mt-4">
+                <div class="w-full  px-4">
+                    <p-table [columns]="cols" [value]="rapportjs" styleClass="p-datatable-striped"
+                    [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]" pageLinks="3" 
+
+                    >
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th style="width: 5%;">Unité</th>
+                            <th style="width: 15%;">Ressource</th>
+                            <th style="width: 20%;">Ref. Rapport</th>
+                            <th style="width: 10%;">Date Rapport</th> 
+                            <th style="width: 10%;">Statut</th> 
+                            <th style="width: 10%;">Visualiser</th>
+                            <th style="width: 10%;">Decision</th>
+                            <th style="width: 25%;">Commentaires</th> 
+                            <th style="width: 3em;"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th> 
+                        
+                    
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-data let-columns="columns" >
+                        <tr [pSelectableRow]="data" *ngIf="data.statut != 'INITIE'" style="height:50px">
+                            <td>{{data.unite}}</td>
+                            <td>{{data.nomEditeur}}</td>
+                            <td>{{data.reference}}</td>
+                            <td>{{data.dateSaisie | date: 'dd/MM/yyyy'}}</td>
+                            <td style="font-weight:bold;" [ngStyle]="{'color': getColor(data)}"> {{data.statut}}  </td>
+                            <td><button class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 rounded"
+                                [disabled] = "getStatut(data)" 
+                                (click)="edit(data)"> 
+                            <i class="fa fa-align-left" aria-hidden="true"></i> </button></td>
+                            <td>
+                                <!--<mat-form-field appearance="fill">
+                                   
+                                    <mat-select
+                                    placeholder="Decision" [disabled] = "c_edit"
+                                    name="decision">
+                                    <mat-option *ngFor="let d of decisions" [value]="d">
+                                        {{d}}
+                                    </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>-->
+                                  <div class="radio">
+                                    <label><input type="radio" [(name)]="optradio" checked>Option 1</label>
+                                    <label><input type="radio" [(name)]="optradio">Option 2</label>
+                                  </div>
+                            </td>
+                            <td>{{data.Commentaires}}</td>
+                            <td><p-tableCheckbox [value]="data"></p-tableCheckbox></td>
+                        
+
+                        </tr>
+                    </ng-template>
+                    </p-table>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

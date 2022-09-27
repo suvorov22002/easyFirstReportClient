@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { AfbcoreService } from 'afbcore';
+import { environment } from 'src/environments/environment';
+import { ShareService } from './service/share.service';
+
+declare const Liferay: any;
 
 @Component({
   selector: 'app-root',
@@ -7,4 +13,26 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'easyFirstReportClient';
+  logoPath = '/o/easyfirstreportclient-0.0.0/easyFirstReportClient/assets/images/EASY-FIRST-REPORT.png';
+
+  constructor(
+    private afbcore: AfbcoreService,
+    private dialog: MatDialog,
+    private service: ShareService
+   ) {
+      // lorsque la page charge nous postons les informations du module dans le BDD liferay
+  
+    //this.apimanager.getApiManager();
+ /*   this.afbcore.postModule(environment.name, 
+    environment.name, 
+    environment.name, "", this.logoPath, 
+    true, "",this.service.permission, Liferay); 
+     
+   */
+   }
+
+   @HostListener('mousemove', ['$event'])
+   onMouseMove(event: any) {    
+    // if(Liferay.Session.get("sessionState") === 'expired')  this.afbcore.logoutPop();
+   }
 }

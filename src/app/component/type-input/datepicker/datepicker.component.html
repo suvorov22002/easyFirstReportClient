@@ -1,0 +1,7 @@
+<mat-form-field class="" *ngIf="loaded">
+    <mat-label>{{evidences.libelle}}</mat-label>
+    <input matInput [matDatepicker]="picker" [formControl]="control" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="control.invalid">{{getErrorMessage()}}</mat-error>
+</mat-form-field>

@@ -1,0 +1,126 @@
+<div
+  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
+  [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
+>
+
+  <div class="rounded-t mb-0 px-4 py-3 border-0">
+    <div class="flex flex-wrap items-center">
+      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+        <h3
+          class="font-semibold text-lg"
+          [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
+        >
+         {{title}}
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="block w-full overflow-auto">
+    <!-- Projects table -scroll   overflow-x-auto-->
+    <table class="items-center w-full bg-transparent border-collapse">
+      <thead>
+        <tr>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Code
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Libelle
+          </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Type
+          </th>
+          <th
+            class=" px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Status
+          </th>
+          <th
+            class="flex-auto px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Editer
+          </th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let item of evid; index as i" class="topic">
+          <th
+            class="px-6 text-xs text-left flex items-center"
+          >
+            
+            <span
+              class="ml-3 font-bold"
+              [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'"
+            >
+              {{item.code}}
+            </span>
+          </th>
+          <td
+            class="px-6 text-xs"
+          >
+          {{item.libelle}}
+          </td>
+          <td
+            class="px-6 text-xs"
+          >
+          {{item.typeInput}}
+          </td>
+          <td
+            class=" px-6 text-xs"
+          >
+            <i *ngIf="!item.actif" class="fas fa-circle text-red-500 mr-2"></i>
+            <i *ngIf="item.actif" class="fas fa-circle text-emerald-500 mr-2"></i>
+          </td>
+          <td
+          class="flex border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap"
+          >       
+            <button
+               class="bg-orange-500 text-black active:bg-red-700 font-bold uppercase text-xs px-2 m-1 rounded"
+                type="button" (click)="editForm(item)"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button
+            class="bg-teal-500 text-black active:bg-red-700 font-bold uppercase text-xs px-2 m-1 rounded"
+             type="button" (click)="erase(item)"
+         >
+          <i class="fas fa-trash-alt"></i>
+         </button>
+          </td>
+
+        </tr>
+       
+      </tbody>
+    </table>
+  </div>
+</div>

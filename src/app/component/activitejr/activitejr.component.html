@@ -1,0 +1,158 @@
+<!--
+<div class="row">
+    <div class="col-md-12">-->
+     <form >
+            <p-table [value]="info" styleClass="p-datatable-striped"
+                [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]" pageLinks="3"
+                >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 20%;">Reference</th>
+                        <th style="width: 10%;">Nombre</th>
+                        <th style="width: 10%;">Volume</th>
+                        <th style="width: 20%;">Evidences</th>
+                        <th style="width: 15%;">Commentaires</th>
+                        <th style="width: 15%;">Categorie</th>
+                        <th style="width: 5%;"></th>
+                        <th style="width: 5%;"></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-data>
+                    <tr style="text-align:center;">
+                        <td style="font-weight:bold;">
+                            {{data.activite.libelle}}
+                        </td>
+                        <td> {{data.nombre}} </td>
+                        <td> {{data.volume}}  </td>
+                        <td> {{data.evidences}}  </td>
+                        <td>{{data.rapportJournalier.dateRapport}}</td>
+                        <td>{{data.activite.categorieActivite.libelle}}</td>
+                        <td><button (click)="delete()"><i class="fa fa-trash-o" style="color:red"></i></button></td>
+                        <td><button (click)="edit()"><i class="fa fa-edit" style="color:#ffa600"></i></button></td>
+
+                    </tr>
+                </ng-template>
+            </p-table>
+        <div style="text-align: right;" class="p-2">
+            <button  [hidden] = "getStatut()" 
+            class="m-1  btn btn-primary btn-radius" (click)="save()" >
+                Valider
+            </button>
+            <button 
+            class="m-1 btn btn-info btn-radius" (click)="close()" >
+                Fermer
+            </button>
+        </div>
+        </form>
+<!--    </div>
+</div>
+-->
+<!--  
+<form  name="findForm" #findForm="ngForm" >
+    <table style="width: 100%;" >
+        <thead>
+            <tr>
+                <th style="width: 20%;">Reference</th>
+                <th style="width: 10%;">Nombre</th>
+                <th style="width: 10%;">Volume</th>
+                <th style="width: 20%;">Evidences</th>
+                <th style="width: 15%;">Commentaires</th>
+                <th style="width: 15%;">Categorie</th>
+                <th style="width: 5%;"></th>
+                <th style="width: 5%;"></th>
+            </tr>
+        </thead>
+    <tbody>
+        <tr *ngFor="let data of info; index as i">
+            <td>
+                <mat-form-field  class="">
+                    <mat-label>Reference</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="data.activite.libelle"
+                    [(ngModel)]="data.activite.libelle"
+                    disabled
+                    > 
+                  </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field style="width: 98%;"  class="">
+                    <mat-label>Nombre</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="data.nombre"
+                    [(ngModel)]="data.nombre"
+                    required
+                    > 
+                  </mat-form-field>
+            </td>
+
+            <td>
+                <mat-form-field style="width: 98%;"  class="">
+                    <mat-label>Volume</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="Volume"
+                    [(ngModel)]="data.volume"
+                   
+                    > 
+                  </mat-form-field>
+            </td>
+
+            <td>
+                <mat-form-field style="width: 98%;"  class="">
+                    <mat-label>Evidences</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="Evidences"
+                    [(ngModel)]="data.evidences"
+                    required
+                    > 
+                  </mat-form-field>
+            </td>
+
+            <td>
+                <mat-form-field style="width: 98%;"  class="">
+                    <mat-label>Jour du rapport</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="Commentaires"
+                    [(ngModel)]="data.rapportJournalier.dateRapport"
+                   
+                    > 
+                  </mat-form-field>
+            </td>
+
+            <td>
+                <mat-form-field style="width: 98%;"  class="">
+                    <mat-label>Categorie</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="Categorie"
+                    [(ngModel)]="data.activite.categorieActivite.libelle"
+                    disabled
+                    > 
+                  </mat-form-field>
+            </td>
+            <td><i class="fas fa-trash-alt"></i></td>
+            <td><i class="fas fa-edit"></i></td>
+           
+        </tr>
+        <tr>
+            <td colspan="8" style="text-align: right;" >
+                <button 
+                class="btn btn-info afb-btn-info" (click)="save()" >
+                    Modifier
+                </button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</form>
+-->

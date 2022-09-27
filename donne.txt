@@ -1,0 +1,7 @@
+http://172.21.10.65:8080/easyreport-1.0.0/rest/api/easyfirstreport/typeevidence
+- (POST) : /add (TypeEvidenceDTO)
+- (PUT) : /update (TypeEvidenceDTO)
+- (DELETE) : /delete/{id}
+- (GET) : /findbycode/{code}
+- (GET) : /findbycodeactif/{code}/{actif}   
+- (POST) : /findtypevidence  (TypeEvidenceDTO)

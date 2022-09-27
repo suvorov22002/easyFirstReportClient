@@ -1,0 +1,27 @@
+tbody tr:nth-child(odd){
+    background-color: #E4E4E7;
+    color: rgb(8, 8, 8);
+    
+}
+
+td.table-column {
+    height: 10px;
+    overflow:hidden;
+}
+
+.mat-form-field {
+   /* width: 100% !important;*/
+    font-size: 9px !important;
+}
+
+table tbody {
+    display: block;
+    max-height: 100px;
+    overflow-y: scroll;
+  }
+  
+  table thead, table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }

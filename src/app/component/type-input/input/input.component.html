@@ -1,0 +1,13 @@
+<mat-form-field class="" *ngIf="loaded" appearance="fill">
+    <mat-label>{{evidences.libelle}}</mat-label>
+    <!--<input matInput  [type]="type" [formControl]="control">-->
+    <input 
+        matInput 
+        style="padding: 0;"
+        placeholder={{evidences.libelle}} 
+        [type]="type" [formControl]="control" 
+        #newItem 
+        [(name)] = "evidences.libelle" 
+    > 
+    <mat-error *ngIf="control.invalid">{{getErrorMessage()}}</mat-error>
+</mat-form-field>

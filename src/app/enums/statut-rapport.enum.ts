@@ -1,0 +1,19 @@
+export enum StatutRapport {
+    AVISFAVORABLE,
+    AVISDEFAVORABLE,
+    CREE,
+    ENCOURS,
+    ARCHIVE,
+    VALIDE,
+    VALIDESOUSRESERVE,
+    REJETE,
+    NONCONFORME,
+    CONFORME,
+    GESTIONNORMALE,
+    MODIFIE,
+    CLOTURE,
+    RETOURNE,
+    RENVOYE,
+    ABANDONNE,
+    INITIE
+}
