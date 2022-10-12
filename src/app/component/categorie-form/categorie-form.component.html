@@ -1,0 +1,78 @@
+<form  name="findForm" #findForm="ngForm" >
+    <table style="width: 100%;" >
+        <thead>
+            <tr>
+                <th>Reference</th>
+                <th>Libelle</th>
+                <th >Evidences</th>
+            </tr>
+        </thead>
+    <tbody>
+        <tr >
+            <td class="px-4">
+                <mat-form-field  class="">
+                    <mat-label>Reference</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="reference"
+                    [(ngModel)]="info.reference"
+                    required
+                    > 
+                  </mat-form-field>
+            </td>
+            <td class="px-4">
+                <mat-form-field style="width: 98%;"  class="">
+                    <mat-label>Libelle</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="libelle"
+                    [(ngModel)]="info.libelle"
+                    required
+                    > 
+                  </mat-form-field>
+            </td>
+
+            <td class="px-4">
+               
+            
+                    <!--<mat-label>Evidences</mat-label>-->
+                    <mat-form-field appearance="fill" class="multis">
+                    <!--<mat-label>Evidences</mat-label>-->
+                    <mat-select [formControl]="toppings" multiple [(value)]="info.evidences" placeholder="Evidences">
+                        <mat-select-trigger >
+                        {{toppings.value ? toppings.value[0].code : ''}}
+                        <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+                            (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping.code}}</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+<!--
+                  <mat-form-field appearance="fill">
+                    <mat-label>Evidences</mat-label>
+                    <mat-select [(ngModel)]="evids" 
+                    placeholder="Evidences" [disabled] = "c_edit"
+                    name="evids">
+                    <mat-option *ngFor="let p of evids" [value]="p">
+                        {{p}}
+                    </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  -->
+            </td>
+        </tr>
+          
+        <tr>
+            <td colspan="3" style="text-align: right;" >
+                <button 
+                class="btn btn-info afb-btn-info" (click)="save(info)" >
+                    Modifier
+                </button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</form>

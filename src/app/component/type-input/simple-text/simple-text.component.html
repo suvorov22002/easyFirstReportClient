@@ -1,0 +1,5 @@
+<mat-form-field class="input-question-full-width" *ngIf="loaded">
+    <mat-label>{{evidences.libelle}}</mat-label>
+    <textarea matInput [formControl]="control"></textarea>
+    <mat-error *ngIf="control.invalid">{{getErrorMessage()}}</mat-error>
+</mat-form-field>

@@ -1,0 +1,44 @@
+<div class="row" style="margin-top: 2%;" >
+    <div class="col-md-12" style="font-size: 13px !important" >
+
+        <p-table [value]="datas" styleClass="p-datatable-striped p-datatable-gridlines" 
+            [paginator]="true" 
+                [rows]="5" styleClass="p-datatable-striped"
+        >
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 30%;">Reference</th>
+                <th style="width: 20%;">Date saisie</th>
+                <th style="width: 20%;">Statut</th>
+                <th style="width: 10%;">Consultation</th> 
+                <th style="width: 10%;">Envoyer</th> 
+           
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data >
+            <tr [pSelectableRow]="data">
+            <td>
+                    {{data.reference}}
+                </td>
+                <td>{{data.dateSaisie | date: 'dd/MM/yyyy'}}</td>
+                <td style="font-weight:bold;" [ngStyle]="{'color': getColor(data)}"> {{data.statut}}  </td>
+        
+            <!--     <td *ngFor="let col of columns">
+                    {{data[col.field]}}
+                </td>
+                -->
+                <td><button class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 rounded"
+                    (click)="edit(data)"> 
+                <i class="fa fa-align-left" aria-hidden="true"></i> </button></td>
+                <td><button class="bg-indigo-500 text-white font-bold uppercase text-xs px-4 rounded"
+                    [hidden] = "getStatut(data)" 
+                    (click)="send(data)"> 
+                <i class="fa fa-paper-plane" aria-hidden="true"></i> </button></td>
+
+            </tr>
+        </ng-template>
+        </p-table>
+
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<form  name="findForm" #findForm="ngForm" >
+    <table style="width: 100%;" >
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Libelle</th>
+                <th >Type</th>
+            </tr>
+        </thead>
+    <tbody>
+        <tr >
+            <td class="px-4">
+                <mat-form-field  class="">
+                    <mat-label>Code</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="code"
+                    [(ngModel)]="info.code"
+                    required
+                    > 
+                  </mat-form-field>
+            </td>
+            <td class="px-4">
+                <mat-form-field style="width: 98%;"  class="">
+                    <mat-label>Libelle</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="libelle"
+                    [(ngModel)]="info.libelle"
+                    required
+                    > 
+                  </mat-form-field>
+            </td>
+
+            <td class="px-4">
+                <mat-form-field appearance="fill">
+                    <mat-label>Type</mat-label>
+                    <mat-select [(ngModel)]="info.typeInput" 
+                        required 
+                    name="type">
+                    <mat-option *ngFor="let p of types" [value]="p.value">
+                        {{p.label}}
+                    </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </td>
+        </tr>
+          
+        <tr>
+            <td colspan="3" style="text-align: right;" >
+                <button 
+                class="btn btn-info afb-btn-info" (click)="save(info)" >
+                    Modifier
+                </button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</form>

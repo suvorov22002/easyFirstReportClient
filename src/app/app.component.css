@@ -1,0 +1,14 @@
+
+  .back{
+   background-image: url("/assets/images/bg_images_easyreportfirst.png");
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border: 1px dotted #eee;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+ 

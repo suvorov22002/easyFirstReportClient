@@ -1,0 +1,108 @@
+<!--<app-sidebar></app-sidebar>
+<div class="relative md:ml-64 bg-blueGray-100 bgimg">
+  <app-header></app-header>
+</div>
+--> 
+
+<div class="container main w-full">
+   
+  
+    <ul class="col-md-12 top-level-menu">
+        
+        <li>
+            <a [routerLink]="['/traitement']" 
+            routerLinkActive="active" 
+            > Gestion Rapport
+            </a> 
+            <ul class="second-level-menu" >
+                <li>
+                    <a [routerLink]="['/traitement']" 
+                    routerLinkActive="active"  
+                        > Saisir Rapport 
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/validrapport']" 
+                    routerLinkActive="active"  
+                        > Valider rapports
+                    </a>
+                </li>
+            </ul>
+            
+        </li>
+       
+        <li>
+            <a [routerLink]="['/consultation']" 
+            routerLinkActive="active" 
+            > Consulter rapports
+            </a> 
+        </li>
+
+        <li>
+            <a [routerLink]="['/reports']" 
+            routerLinkActive="active" 
+            > Reporting
+            </a> 
+        </li>
+
+        <li>
+            <a [routerLink]="['/config']" 
+            routerLinkActive="active" 
+            > Configuration
+            </a> 
+            <ul class="second-level-menu" >
+                <li>
+                    <a [routerLink]="['/evidences']" 
+                    routerLinkActive="active"  
+                        > Evidences
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/categorie']" 
+                    routerLinkActive="active"  
+                        > Categorie 
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/etapes']" 
+                    routerLinkActive="active"  
+                        > Etapes
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/config/parcours']" 
+                    routerLinkActive="active"  
+                        > Parcours
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <a [routerLink]="['/parametre']" 
+            routerLinkActive="active" 
+            > Paramètres
+            </a> 
+            <ul class="second-level-menu" >
+                <li>
+                    <a [routerLink]="['/parametre']" 
+                    routerLinkActive="active"  
+                        > Paramètres generaux
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/historiques']" 
+                    routerLinkActive="active"  
+                        > Traces operations
+                    </a>
+                </li>
+            </ul>
+            
+        </li>
+       
+        
+    </ul>
+
+</div>
+    
+    

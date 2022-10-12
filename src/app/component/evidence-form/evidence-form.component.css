@@ -1,0 +1,11 @@
+.mat-form-field {
+    width: 100% !important;
+    font-size: 13px !important;
+}
+
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+    z-index: 10000 !important;
+    }
+    .cdk-global-overlay-wrapper, .cdk-overlay-container {
+        z-index: 10000 !important;
+        }

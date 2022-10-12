@@ -1,0 +1,31 @@
+/*.top-level-menu-1*/
+[class*="top-level-menu"] li:hover > ul
+{
+    /* On hover, display the next level's menu */
+    display: inline;
+}
+
+[class*="top-level-menu"] > li > a:hover {
+    background-color: #ca2020;
+    cursor: pointer;
+    color: white;
+}
+
+[class*="second-level-menu"] > li
+{
+    position: relative;
+ /*   height: 30px;
+    width: 100%;*/
+    background: #999999;
+    border-radius:15px;
+ /*   border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;*/
+}
+
+[class*="second-level-menu"] > li :hover { 
+    background: #ca2020; 
+    cursor: pointer; 
+    min-width: 100px ;
+    max-width: 250px ;
+    border-radius:15px;
+}

@@ -1,0 +1,264 @@
+<div class="flex justify-center">
+    <div class="w-full lg:w-9/12 px-4">
+        <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+      >
+
+      <!-- Header liste d'evidences -->
+      <div class="rounded-t bg-white mb-0 px-4 py-4">
+        <h6 class="text-blueGray-700 text-xl font-bold">Rapport d'activité.</h6> 
+        <div class="relative text-center flex justify-end">
+       
+          <button
+                class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                type="button" (click)="toggleCollapseShow1()"
+              >
+              <i class="fa fa-edit" style="font-size:15px; color:#f1f3f1"></i>
+              Ajouter Rapport
+          </button>
+          <button
+            class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+            type="button" (click)="toggleCollapseShow()"
+          >
+          <i class="fa fa-eye" aria-hidden="true" style="font-size:15px; color:#f1f3f1"></i>
+            Visualiser
+          </button>
+        </div>
+
+      </div>
+
+     
+        <!-- Table liste d'evidences -->
+        <!--   *ngxPermissionsOnly="['PRECON_MANAGE_EXTRACTION']"  <div class="flex-auto px-4 lg:px-10 py-10 pt-0" [ngClass]="collapseShow1 ? 'show':'hidden'">-->
+    <div class="flex-auto px-4 lg:px-10 py-10 pt-0" [ngClass]="collapseShow ? 'show':'hidden'"> 
+        <div class="flex flex-wrap mt-4">
+            <div class="w-full mb-12 px-4">
+              <app-activities-table [rapport] = "rapportjs"></app-activities-table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Header ajout d'evidences -->
+    <!--   <div class="rounded-t bg-white mb-0 px-6 py-6">
+          <div class="text-center flex justify-between">
+   
+          <h6 class="text-blueGray-700 text-xl font-bold">Rapport d'activité.</h6> 
+         <button
+              class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+              type="button" (click)="toggleCollapseShow1()"
+            >
+            <i class="fa fa-eye" aria-hidden="true"></i>
+             Ajouter Rapport
+            </button> 
+          </div>
+        </div>-->
+        <!-- form ajout d'evidences -->
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0" [ngClass]="collapseShow1 ? 'show':'hidden'">
+        <form> 
+            <div class="flex flex-wrap mt-3 mb-3 gap-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>Date du rapport</mat-label>
+                  <input matInput [matDatepicker]="pickers" name="dater"
+                  [(ngModel)]="rapportj.dateRapport">
+                  <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+                  <mat-datepicker #pickers></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Categorie</mat-label>
+                    <mat-select [(ngModel)]="obj.categ" 
+                      (selectionChange)="onChange($event)" required 
+                    name="catego"   placeholder="Choisir une categorie">
+                    <mat-option *ngFor="let c of categories" [value]="c.reference">
+                        {{c.libelle}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+              <!--  <h6 class="text-blueGray-700 px-2 py-2 text-sm font-bold"> {{obj.categ}}</h6> -->
+
+            </div>
+         <!--   <hr class="mt-6 border-b-1 mt-3 mb-6 border-blueGray-300" />-->
+            <h4 class="text-blueGray-700 text-xs font-bold title-imp">Selectionner une activité</h4> <br>
+            <div class="flex flex-wrap text-lightBlue-600">
+              <div class="w-full lg:w-3/12 px-4">
+                <div class="relative w-full mb-3">
+                
+                    <mat-form-field appearance="fill">
+                    <mat-label>Activite</mat-label>
+                    <mat-select [(ngModel)]="activiteJr.activite" 
+                            (selectionChange)="onChangeActivite($event)"
+                    name="activite" required placeholder="Choisir une activite">
+                    <mat-option *ngFor="let p of activites" [value]="p">
+                        {{p.libelle}}
+                    </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+
+                </div>
+              </div>
+              <div class="w-full lg:w-3/12 px-4">
+                <div class="relative w-full mb-3">
+            
+                  <mat-form-field  class="" appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input 
+                      matInput 
+                      style="padding: 0;"
+                      name="nombre"
+                      [(ngModel)]="activiteJr.nombre"
+                      placeholder="Nombre"
+                      type = "number"
+                      required 
+                    > 
+                  </mat-form-field>
+
+                </div>
+              </div>
+              <div class="w-full lg:w-3/12 px-4">
+                <div class="relative w-full mb-3">
+                  <mat-form-field  appearance="fill">
+                    <mat-label>Volume</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="volume"
+                    [(ngModel)]="activiteJr.volume"
+                    type = "number" 
+                    > 
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <h4 class="text-blueGray-700 text-xs font-bold title-imp">Renseigner les evidences</h4> <br>
+               
+         <div class="flex flex-wrap">
+        
+              <div *ngFor="let evide of all_evidences">
+         
+                <!-- <app-dynamic-evidence [evid]="evide" ></app-dynamic-evidence> --> 
+                  <app-evi-form [evid]="evide"></app-evi-form>
+
+               </div>
+
+        </div> 
+           <!--      
+              <div class="w-full lg:w-3/12 px-4" >
+                <div class="relative w-full mb-3">
+                  <mat-form-field  appearance="fill">
+                    <mat-label>Nom client</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="nomcli"
+                    [(ngModel)]="nomcli"
+                  
+                    > 
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="w-full lg:w-3/12 px-4" >
+                <div class="relative w-full mb-3">
+                  <mat-form-field  appearance="fill">
+                    <mat-label>Numero compte</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="ncp"
+                    [(ngModel)]="ncp"
+                  
+                    > 
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="w-full lg:w-3/12 px-4" *ngIf="evide.typeInput == 'DATE'">
+                <div class="relative w-full mb-3">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" name="date"
+                    [(ngModel)]="date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="w-full lg:w-3/12 px-4" >
+                <div class="relative w-full mb-3">
+                  <mat-form-field  appearance="fill">
+                    <mat-label>Lieu</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="lieu"
+                    [(ngModel)]="lieu"
+                  
+                    > 
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="w-full lg:w-3/12 px-4" >
+                <div class="relative w-full mb-3">
+                  <mat-form-field  appearance="fill">
+                    <mat-label>Objet</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;"
+                    name="objet"
+                    [(ngModel)]="objet"
+                  
+                    > 
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="w-full lg:w-6/12 px-4" >
+                <div class="relative w-full mb-3">
+                    <mat-form-field class="content-full-width" appearance="fill">
+                        <mat-label>Contenu</mat-label>
+                        <textarea matInput placeholder="Contenu et resolution..." name="content"
+                        [(ngModel)]="content"></textarea>
+                      </mat-form-field>
+                </div>
+              </div>
+        </div>     
+            </div>-->
+
+            <div class="flex justify-end">
+                <div class="w-full flex flex-nowrap justify-end" >
+                  <button
+                    class="bg-indigo-500 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                    type="button"
+                    (click)="addActivity()" 
+                    [matBadge]="charge" matBadgePosition="before" matBadgeColor="accent" [matBadgeHidden]="hidden"
+                  >
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                   Ajout activite
+                  </button>
+                 
+                    <button
+                        class="bg-red-500 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                        type="button"
+                    >
+                      <i class="fa fa-check-square" aria-hidden="true"></i>
+                      Annuler
+                    </button>
+
+                    <button
+                      class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                      type="button"  (click)="saveR()"
+                      >
+                      <i class="fa fa-check-square" aria-hidden="true"></i>
+                        Valider
+                    </button>
+                </div>
+            </div>
+      
+           
+        </form> 
+        </div>
+        <hr class="mt-6 border-b-1 border-blueGray-300" />
+        
+      </div>
+      
+    </div>
+</div>
+  

@@ -1,0 +1,192 @@
+<div class="w-full flex justify-center">
+    <div class="w-full lg:w-9/12 px-4">
+        <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+      >
+    <!-- Header ajout d'evidences -->
+       <div class="rounded-t bg-white mb-0 px-6 py-2">
+          <div class="text-center flex justify-between">
+          <h6 class="text-blueGray-700 text-xl font-bold">Ajout d'etape</h6> 
+        <!--    <button
+              class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+              type="button"  (click)="toggleCollapseShow()"
+            >
+             <i class="fa fa-plus" aria-hidden="true"></i>
+              Ajouter etape
+            </button>
+        -->
+          </div>
+        </div>
+        <!-- form ajout d'evidences -->
+        <div class="flex-auto px-4 lg:px-10 pt-0">
+        <form autocomplete="off"> 
+            <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+              
+            </h6>
+            <div class="flex flex-wrap">
+              <div class="w-full lg:w-6/12 px-4">
+                <div class="relative w-full mb-3">
+                 
+                  <mat-form-field  class="" appearance="fill">
+                    <mat-label>Code</mat-label>
+                    <input 
+                      matInput 
+                      style="padding: 0;" 
+                      name="code" 
+                      [(ngModel)]="etap.code" 
+                      placeholder="Code" 
+                      required
+                    > 
+                  </mat-form-field>
+
+                </div>
+              </div>
+              <div class="w-full lg:w-6/12 px-4">
+                <div class="relative w-full mb-3">
+                  <mat-form-field  appearance="fill">
+                    <mat-label>Libelle</mat-label>
+                    <input 
+                    matInput 
+                    style="padding: 0;" 
+                    name="libelle" 
+                    [(ngModel)]="etap.libelle" 
+                    required
+                    > 
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="w-full lg:w-4/12 px-4">
+                <div class="relative w-full mb-3">
+              
+                  <mat-form-field appearance="fill">
+                    <mat-label>Type operations</mat-label>
+                    <mat-select [(ngModel)]="etap.typeOperation" 
+                    required 
+                    name="type">
+                    <mat-option *ngFor="let p of types" [value]="p.value">
+                        {{p.label}}
+                    </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                </div>
+              </div>
+              <div class="w-full lg:w-4/12 px-4">
+                <div class="relative w-full mb-3">
+               <!--   <mat-form-field appearance="fill" class="multis">
+                    <mat-label>Delai</mat-label>
+                    <mat-select [formControl]="toppings" multiple   placeholder="Delai"  required [(value)]="etap.dureeEtape">
+                      <mat-option *ngFor="let topping of toppingList" [value]="topping.value">{{topping.label}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                -->
+                  <mat-form-field appearance="fill">
+                    <mat-label>Delai</mat-label>
+                    <mat-select [(ngModel)]="etap.dureeEtape" 
+                    required  placeholder="Delai" 
+                    name="delai">
+                    <mat-option *ngFor="let topping of toppingList" [value]="topping.value">
+                        {{topping.label}}
+                    </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="w-full lg:w-4/12 px-4">
+                <div class="relative w-full mb-3">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Ordre</mat-label>
+                    <mat-select [(ngModel)]="etap.ordre" 
+                    required 
+                    name="ordre">
+                    <mat-option *ngFor="let o of ordres" [value]="o">
+                        {{o}}
+                    </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                </div>
+              </div>
+             
+         
+            </div>
+
+            <div class="w-full  px-4 flex nowrap justify-end">
+                <div class="w-full flex nowrap justify-end" >
+                  <button
+                    class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                    type="button"
+                    (click)="save()"
+                  >
+                  <i class="fa fa-check-square" aria-hidden="true"></i>
+                  Valider
+                  </button>
+                  <button
+                    class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                    type="button"
+                  >
+                  <i class="fa fa-check-square" aria-hidden="true"></i>
+                  Annuler
+                  </button>
+                </div>
+            </div>
+      
+           
+        </form> 
+        </div>
+        <hr class="mt-6 border-b-1 border-blueGray-300" />
+        <!-- Header liste d'evidences  lg:w-1/12 -->
+        <div class="rounded-t bg-white mb-0 px-6 py-2">
+            <div class="text-center flex justify-between">
+            <h6 class="text-blueGray-700 text-xl font-bold">Liste des etapes</h6> 
+    
+            </div>
+
+        </div>
+
+         
+            <!-- Table liste d'evidences -->
+    <!--    <div class="flex-auto px-4 lg:px-10 py-10 pt-0" [ngClass]="collapseShow1 ? 'show':'hidden'">-->
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0"> 
+            <div class="flex flex-wrap mt-4">
+                <div class="w-full mb-12 px-4">
+                    <p-table [value]="datas" styleClass="p-datatable-striped" 
+                    [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]" pageLinks="3"
+                    >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 25%;">Code</th>
+                            <th style="width: 30%;">Libelle</th>
+                            <th style="width: 15%;">Action</th>
+                            <th style="width: 10%;">Frequence</th>
+                            <th style="width: 10%;">Ordre</th>
+                            <th style="width: 10%;">Edit</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-data>
+                        <tr>
+                            <td>
+                                {{data.code}}
+                            </td>
+                            <td> {{data.libelle}} </td>
+                            <td> {{data.typeOperation}} </td>
+                            <td> {{data.dureeEtape}} </td>
+                            <td> {{data.ordre}} </td>
+                            <td> <i class="fa fa-ellipsis-v" aria-hidden="true"></i> </td>
+                        </tr>
+                    </ng-template>
+                    </p-table>
+                </div>
+         
+            </div>
+        </div>
+
+  
+ 
+
+
+      </div>
+      
+    </div>
+</div>
+  

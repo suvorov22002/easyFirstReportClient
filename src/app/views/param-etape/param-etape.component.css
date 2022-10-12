@@ -1,0 +1,28 @@
+.mat-form-field {
+    width: 100% !important;
+    font-size: 13px !important;
+}
+
+.multis{
+    font-size: 7px !important;
+}
+
+:host::ng-deep .p-datatable .p-datatable-tbody>tr {
+    font-size: 14px !important;
+    text-align: center !important;
+}
+
+:host::ng-deep .p-datatable .p-datatable-tbody>tr>td {
+    padding: 0px !important;
+    text-align: center !important;
+    word-wrap:break-word; /*old browsers*/
+    overflow-wrap:break-word;
+}
+
+:host::ng-deep .p-datatable .p-datatable-thead>tr>th {
+    text-align: center !important;
+    color:white;
+    height: 20px;
+    --tw-bg-opacity: 1;
+    background-color: rgba(153, 27, 27, var(--tw-bg-opacity));
+}

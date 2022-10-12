@@ -1,0 +1,11 @@
+.bgimg {
+   /* background: url('/o/easy-first-report-client-0.0.0/easyFirstReportClient/assets/images/bg_global.gif');*/
+    background-image: url('/assets/images/bg_global.gif');
+    background-repeat: repeat;
+    background-size: 100px;
+    background-position: center;
+    background-color: rgb(230, 230, 230, 0.1);
+    border: 1px dotted #eee;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
