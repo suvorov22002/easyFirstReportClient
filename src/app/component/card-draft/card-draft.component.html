@@ -1,59 +1,120 @@
-<table class="table">
-	<thead>
-		<tr>
-			<th>Categorie activité</th>
-			<th>Activité</th>
-			<th>Evidences</th>
-			<th>Ajouter</th>
-	</thead>
+<div class="flex justify-center">
+    <div class="w-full lg:w-9/12 px-4">
+        <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+      >
 
-	<tr *ngFor="let data of listCateg;let i = index" (click)=addToAnotherActivity(i)>
+      <!-- Header liste d'evidences -->
+      <div class="rounded-t bg-white mb-0 px-4 py-4">
+        <h6 class="text-blueGray-700 text-xl font-bold">Rapport d'activité.</h6> 
+        <div class="relative text-center flex justify-end">
+       
+          <button
+                class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-sm px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                type="button" (click)="formatDatas()"
+              >
+              <i class="fa fa-edit" style="font-size:15px; color:#f1f3f1"></i>
+              Ajouter Rapport
+          </button>
+          <button
+            class="bg-blueGray-900 text-white active:bg-red-700 font-bold uppercase text-sm px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+            type="button" (click)="toggleCollapseShow()"
+          >
+          <i class="fa fa-eye" aria-hidden="true" style="font-size:15px; color:#f1f3f1"></i>
+            Visualiser
+          </button>
+        </div>
 
-		<td>
-			<span>{{data.libelle}}</span>
-		</td>
-		<td>
-			<span>{{data.job}}</span>
-		</td>
-		<td>
-			<span>{{data.year_joined}}</span>
-		</td>
-		<td>
-			<select>
-             <option *ngFor="let mission of data.missions">
-                {{mission}}
-             </option>
-          </select>
-		</td>
-	</tr>
-</table>
-<!--
-<table class="table">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Job</th>
-			<th>Year Joined</th>
-			<th>Mission</th>
-	</thead>
+      </div>
 
-	<tr *ngFor="let data of secondaryTable">
-		<td>
-			<span>{{Table[data].name}}</span>
-		</td>
-		<td>
-			<span>{{Table[data].job}}</span>
-		</td>
-		<td>
-			<span>{{Table[data].year_joined}}</span>
-		</td>
-		<td>
-			<select>
-            <option *ngFor="let mission of Table[data].missions">
-             {{mission}}
-            </option>
-          </select>
-		</td>
-	</tr>
-</table>
--->
+	  <div >
+		<!-- Projects table -scroll   overflow-x-auto  class="block w-full overflow-auto"-->
+		<table class="items-center w-full bg-transparent border-collapse">
+          <thead>
+			<tr>
+			  <th 
+				class="px-6 align-middle border border-solid py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+				[ngClass]="
+				  color === 'light'
+					? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+					: 'bg-red-800 text-red-300 border-red-700'
+				"
+				class="px-6 text-sm" style="width: 20%;"
+			  >
+			  		Categorie activité
+			  </th>
+			  <th
+				class="px-6 align-middle border border-solid py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+				[ngClass]="
+				  color === 'light'
+					? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+					: 'bg-red-800 text-red-300 border-red-700'
+				"
+				class="px-6 text-sm" style="width: 20%;"
+			  >
+			  Activité
+			  </th>
+			  <th
+				class="px-6 align-middle border border-solid py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+				[ngClass]="
+				  color === 'light'
+					? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+					: 'bg-red-800 text-red-300 border-red-700'
+				"
+				style="width: 50%;"
+			  >
+			  Evidences
+			  </th>
+			  <th
+				class=" px-6 align-middle border border-solid py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+				[ngClass]="
+				  color === 'light'
+					? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+					: 'bg-red-800 text-red-300 border-red-700'
+				" 
+				style="width: 8%;"
+			  >
+			  Ajouter
+			  </th>
+			</tr>
+		 </thead>
+		 <tbody>
+			<tr *ngFor="let data of listCategs;let i = index" (click)=addToAnotherActivity(i)>
+			  <th
+				class="px-6 text-sm text-left items-center" style="width: 20%;"
+			  >
+					{{data.libelle}}
+			
+			  </th>
+			  <td
+				class="px-6 text-sm" style="width: 20%;"
+			  >
+			  		{{data.activite}}
+			  </td>
+			  <td
+				class="px-6 text-sm" style="width: 50%;"
+			  >
+			  	{{data.reference}}
+			  </td>
+			  <td
+			     class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap" 
+			     style="width: 7%;"
+			  >       
+				<button
+				   class="bg-blueGray-900 text-black active:bg-red-700 font-bold uppercase text-sm px-2 m-1 rounded"
+					type="button" (click)="addActi(item)"
+				>
+				  <i class="fa fa-plus"></i>
+				</button>
+			  </td>
+	
+			</tr>
+		</tbody>
+		</table>
+	  </div>
+        
+      </div>
+      
+    </div>
+</div>
+  

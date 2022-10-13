@@ -86,6 +86,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BodyComponent } from './component/body/body.component';
 import { MenuComponent } from './layout/menu/menu.component';
 import { CardDraftComponent } from './component/card-draft/card-draft.component';
+import { CardSheetsComponent } from './component/card-sheets/card-sheets.component';
         
 export function initApp(appInitService:AppinitService){
   return (): Promise<any> => {
@@ -163,7 +164,8 @@ var SERVICES = [
     EvidenceFormComponent,
     CategorieFormComponent,
     MenuComponent,
-    CardDraftComponent
+    CardDraftComponent,
+    CardSheetsComponent
     
   ],
   imports: [

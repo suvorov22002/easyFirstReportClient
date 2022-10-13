@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BodyComponent } from './component/body/body.component';
+import { CardDraftComponent } from './component/card-draft/card-draft.component';
+import { CardSheetsComponent } from './component/card-sheets/card-sheets.component';
 import { UActivitejrComponent } from './component/u-activitejr/u-activitejr.component';
 import { ValidrapportComponent } from './component/validrapport/validrapport.component';
 
@@ -47,7 +49,7 @@ const routes: Routes = [
       },
       {
         path:"traitement",
-        component: VTraitementComponent
+        component: CardSheetsComponent //VTraitementComponent;CardDraftComponent 
       },
       {
         path:"activites",
