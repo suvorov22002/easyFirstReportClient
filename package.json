@@ -27,7 +27,7 @@
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
     "@fortawesome/fontawesome-free": "5.15.3",
-    "afbcore": "file:../../../biblioIntra/afbcore-0.3.1.tgz",
+    "afbcore": "file:../../biblioIntra/afbcore-0.3.1.tgz",
     "bootstrap": "5.0.2",
     "exceljs": "^4.2.1",
     "file-saver": "^2.0.5",

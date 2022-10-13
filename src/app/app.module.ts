@@ -85,6 +85,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BodyComponent } from './component/body/body.component';
 import { MenuComponent } from './layout/menu/menu.component';
+import { CardDraftComponent } from './component/card-draft/card-draft.component';
         
 export function initApp(appInitService:AppinitService){
   return (): Promise<any> => {
@@ -161,7 +162,8 @@ var SERVICES = [
     ValidrapportComponent,
     EvidenceFormComponent,
     CategorieFormComponent,
-    MenuComponent
+    MenuComponent,
+    CardDraftComponent
     
   ],
   imports: [

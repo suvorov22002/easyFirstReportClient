@@ -1,0 +1,59 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>Categorie activité</th>
+			<th>Activité</th>
+			<th>Evidences</th>
+			<th>Ajouter</th>
+	</thead>
+
+	<tr *ngFor="let data of listCateg;let i = index" (click)=addToAnotherActivity(i)>
+
+		<td>
+			<span>{{data.libelle}}</span>
+		</td>
+		<td>
+			<span>{{data.job}}</span>
+		</td>
+		<td>
+			<span>{{data.year_joined}}</span>
+		</td>
+		<td>
+			<select>
+             <option *ngFor="let mission of data.missions">
+                {{mission}}
+             </option>
+          </select>
+		</td>
+	</tr>
+</table>
+<!--
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Job</th>
+			<th>Year Joined</th>
+			<th>Mission</th>
+	</thead>
+
+	<tr *ngFor="let data of secondaryTable">
+		<td>
+			<span>{{Table[data].name}}</span>
+		</td>
+		<td>
+			<span>{{Table[data].job}}</span>
+		</td>
+		<td>
+			<span>{{Table[data].year_joined}}</span>
+		</td>
+		<td>
+			<select>
+            <option *ngFor="let mission of Table[data].missions">
+             {{mission}}
+            </option>
+          </select>
+		</td>
+	</tr>
+</table>
+-->
